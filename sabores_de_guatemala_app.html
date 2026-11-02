@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#174c35">
+<title>Sabores de Guatemala</title>
+<style>
+:root{--green:#174c35;--green2:#28734d;--cream:#faf7ef;--ink:#243329;--muted:#68756c;--line:#e4e9e2}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font:16px system-ui,-apple-system,Segoe UI,sans-serif}
+header{background:linear-gradient(120deg,var(--green),var(--green2));color:white;padding:28px 18px 24px}
+.wrap{max-width:980px;margin:auto;padding:0 16px}header .wrap{padding:0}
+.kicker{font-size:11px;letter-spacing:2px;opacity:.8}.brand{font-size:clamp(27px,6vw,42px);font-weight:800;margin:5px 0}.tag{opacity:.9}
+nav{display:flex;gap:8px;overflow:auto;padding:14px 0;position:sticky;top:0;background:var(--cream);z-index:2}
+button{border:0;border-radius:10px;padding:11px 15px;font-weight:650;cursor:pointer}
+nav button{background:white;border:1px solid var(--line);white-space:nowrap;color:var(--ink)}
+nav button.active,.primary{background:var(--green2);color:white}
+main{padding-bottom:40px}.hero,.card{background:white;border:1px solid var(--line);border-radius:16px;padding:18px;margin:12px 0}
+.hero{background:#e8f0e8}.hero h2{margin:0 0 7px}.muted{color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:13px}
+.food{background:white;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.food .pic{height:130px;background:linear-gradient(135deg,#d7e4d4,#f0e6ce);display:grid;place-items:center;font-size:48px}
+.food .body{padding:13px}.price{font-weight:800;margin:9px 0}
+input{width:100%;padding:12px;border:1px solid var(--line);border-radius:9px;margin:6px 0 12px;font:inherit}
+.metric{font-size:25px;font-weight:800}.hidden{display:none!important}
+footer{text-align:center;color:var(--muted);padding:25px;font-size:12px}
+table{width:100%;border-collapse:collapse;font-size:14px}td{padding:9px 4px;border-bottom:1px solid var(--line)}
+@media(min-width:700px){header{padding:38px 24px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><div class="kicker">RESTAURANTE · GUATEMALA 🇬🇹</div><div class="brand">Sabores de Guatemala</div><div class="tag">Tradición que conquista tu paladar</div></div></header>
+<div class="wrap">
+<nav>
+<button class="active" data-tab="inicio">Inicio</button><button data-tab="menu">Menú</button><button data-tab="puntos">Mis puntos</button><button data-tab="admin">Administración</button>
+</nav>
+<main>
+<section id="inicio">
+<div class="hero"><h2>¡Bienvenido!</h2><p>Descubre los sabores de nuestra tierra. Consulta nuestro menú y conoce las promociones.</p><button class="primary" data-open="menu">Ver menú</button></div>
+<div class="grid"><div class="card"><h3>🍲 Comida típica</h3><p class="muted">Platillos inspirados en la tradición guatemalteca.</p></div><div class="card"><h3>⭐ Sabores que Premian</h3><p class="muted">Acumula puntos con tus compras registradas.</p><button data-open="puntos">Consultar puntos</button></div></div>
+</section>
+<section id="menu" class="hidden"><h2>Nuestro menú</h2><p class="muted">Precios de ejemplo. La administración debe confirmarlos antes de publicar.</p><div class="grid" id="foods"></div>
+<div class="card"><h3>Mi pedido de demostración</h3><div id="cart">No has agregado productos.</div><p><b id="total">Total: Q0.00</b></p><label>Nombre del cliente</label><input id="customer" placeholder="Tu nombre"><button class="primary" id="place">Registrar pedido de prueba</button><p class="muted">Este prototipo no envía pedidos a la cocina ni procesa pagos.</p></div></section>
+<section id="puntos" class="hidden"><h2>Sabores que Premian ⭐</h2><div class="card"><label>Nombre del cliente</label><input id="loyaltyName" placeholder="Tu nombre"><div class="muted">Puntos de esta demostración</div><div class="metric" id="points">0 puntos</div><p class="muted">Regla de ejemplo: 1 punto por cada Q10 de compra registrada en este navegador.</p><p>50 puntos: descuento especial<br>100 puntos: bebida gratis<br>200 puntos: premio especial</p></div></section>
+<section id="admin" class="hidden"><h2>Panel administrativo de demostración</h2><div class="grid"><div class="card"><div class="muted">Ventas registradas</div><div class="metric" id="sales">Q0.00</div></div><div class="card"><div class="muted">Pedidos</div><div class="metric" id="orders">0</div></div><div class="card"><div class="muted">Clientes</div><div class="metric" id="clients">0</div></div></div><div class="card"><h3>Indicadores KPI propuestos</h3><table><tr><td>Incremento de ventas</td><td>10%</td></tr><tr><td>Reducción de desperdicios</td><td>20%</td></tr><tr><td>Satisfacción del cliente</td><td>90%</td></tr><tr><td>Capacitación del personal</td><td>100%</td></tr></table><p class="muted">Los datos de este prototipo se guardan únicamente en el navegador de este dispositivo. No usar para operación comercial real todavía.</p></div></section>
+</main><footer>Sabores de Guatemala · Hecho con tradición 🇬🇹</footer>
+</div>
+<script>
+const products=[['Pepián','Platillo tradicional','Q45.00','🍲',45],['Jocón','Receta guatemalteca','Q40.00','🥘',40],["Kak'ik",'Caldo tradicional','Q50.00','🍜',50],['Hilachas','Sabor de Guatemala','Q42.00','🍛',42]];
+let cart=[],sales=0,orders=0,points=0,clients=new Set();
+const $=id=>document.getElementById(id);
+function tab(name){document.querySelectorAll('main section').forEach(s=>s.classList.toggle('hidden',s.id!==name));document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.tab===name));}
+document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>tab(b.dataset.tab));
+document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>tab(b.dataset.open));
+$('foods').innerHTML=products.map((p,i)=>`<article class="food"><div class="pic">${p[3]}</div><div class="body"><b>${p[0]}</b><div class="muted">${p[1]}</div><div class="price">${p[2]}</div><button class="primary" onclick="add(${i})">Agregar</button></div></article>`).join('');
+function add(i){cart.push(products[i]);renderCart()}
+function renderCart(){$('cart').textContent=cart.length?cart.map(p=>p[0]+' · '+p[2]).join(' / '):'No has agregado productos.';$('total').textContent='Total: Q'+cart.reduce((a,p)=>a+p[4],0).toFixed(2)}
+$('place').onclick=()=>{if(!cart.length){alert('Agrega un platillo primero.');return}let total=cart.reduce((a,p)=>a+p[4],0),name=$('customer').value.trim()||'Cliente';sales+=total;orders++;points+=Math.floor(total/10);clients.add(name);$('points').textContent=points+' puntos';$('loyaltyName').value=name;cart=[];renderCart();refresh();alert('Pedido de demostración registrado.')}
+function refresh(){$('sales').textContent='Q'+sales.toFixed(2);$('orders').textContent=orders;$('clients').textContent=clients.size}
+$('loyaltyName').onchange=()=>{if($('loyaltyName').value.trim())clients.add($('loyaltyName').value.trim());refresh()}
+</script>
+</body></html>
