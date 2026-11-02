@@ -1,37 +1,60 @@
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sabores de Guatemala</title>
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f8f1e5"><title>Sabores de Guatemala</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f8f1e5;color:#29231e}
-header{text-align:center;background:white;padding:22px 10px}
-header h1{color:#a52320;font-family:Georgia,serif;font-size:30px;margin:8px}
-header p{color:#666;font-size:13px}
-nav{display:flex;justify-content:space-around;background:white;padding:12px 3px;position:sticky;top:0}
-nav button{border:0;background:#f5e8d9;padding:10px;border-radius:12px;color:#214b35;font-weight:bold}
-.hero{padding:30px 20px;min-height:280px;border-radius:18px;color:white;background:linear-gradient(#0005,#000b),url('https://images.unsplash.com/photo-1512813195386-6cf811ad3542?w=1000') center/cover}
-.hero h2{font-size:38px;font-family:Georgia,serif}
-main{padding:15px;max-width:900px;margin:auto}
-h2{color:#214b35}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.food{background:white;border-radius:15px;overflow:hidden;border:1px solid #eadfce}
-.food img{width:100%;height:130px;object-fit:cover}
-.food div{padding:10px}
-.food h3{margin:0;color:#214b35;font-size:16px}
-.food p{font-size:12px;color:#666}
-.price{color:#a52320;font-weight:bold}
-.add{background:#a52320;color:white;border:0;border-radius:9px;padding:9px 15px}
-.page{display:none}
-.page.active{display:block}
-.btn{background:#a52320;color:white;border:0;border-radius:25px;padding:13px 20px;font-weight:bold}
-input,select{width:100%;padding:12px;margin:6px 0;border:1px solid #ddd;border-radius:10px}
-.panel{background:white;border-radius:15px;padding:15px;margin:12px 0}
-footer{background:#214b35;color:white;text-align:center;padding:25px}
-@media(min-width:650px){.grid{grid-template-columns:repeat(3,1fr)}}
-</style>
-</head>
-<body>
+:root{--cream:#f8f1e5;--paper:#fffdf8;--red:#a52320;--green:#214b35;--gold:#d8ad61;--ink:#211d19;--muted:#776f66;--line:#eadfce}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:system-ui,-apple-system,Arial,sans-serif}button,input,select{font:inherit}button{cursor:pointer}
+.stripe{height:9px;background:repeating-linear-gradient(90deg,#a52320 0 12px,#e0b75c 12px 20px,#1e513b 20px 31px,#183b2c 31px 40px)}
+header{text-align:center;background:var(--paper);padding:18px;border-bottom:1px solid var(--line)}.eyebrow{font-size:12px;letter-spacing:3px;color:var(--green);font-weight:800}.brand{font:800 clamp(27px,6vw,39px) Georgia,serif;color:#7e1718;margin:7px}.tagline{font-size:13px;color:var(--muted);margin:0}
+nav{position:sticky;top:0;z-index:5;background:#fffdf8ed;display:flex;justify-content:space-around;padding:7px 3px;border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}
+nav button{border:0;background:transparent;color:#5e554b;border-radius:12px;padding:7px 9px;font-size:12px;font-weight:750;display:flex;flex-direction:column;align-items:center;gap:2px}nav button span{font-size:20px}nav button.active{color:var(--red);background:#f7e8dc}
+main{max-width:1050px;margin:auto;padding:16px 13px 90px}.page{display:none}.page.active{display:block}
+.hero{min-height:340px;border-radius:21px;overflow:hidden;display:flex;align-items:end;padding:24px;color:white;background:linear-gradient(0deg,#1b100bd9,transparent 80%),url('https://images.unsplash.com/photo-1512813195386-6cf811ad3542?auto=format&fit=crop&w=1400&q=85') center/cover}
+.hero h1{font:800 clamp(36px,8vw,58px)/.98 Georgia,serif;margin:0 0 12px}.hero p{max-width:430px;line-height:1.5}.btn{border:0;border-radius:999px;padding:13px 20px;background:var(--red);color:#fff;font-weight:800}.btn.green{background:var(--green)}
+.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:14px 0}.quick button{border:1px solid #e7d6b8;border-radius:15px;background:#f1e4cf;padding:13px 4px;color:var(--green);font-weight:800}.quick b{display:block;font-size:23px;margin-bottom:4px}
+h2{font:800 26px Georgia,serif;color:var(--green);margin:23px 0 13px}.toolbar{display:grid;gap:9px;margin:12px 0}.search,.filter,.field{width:100%;padding:13px;border:1px solid #ddcfbb;border-radius:12px;background:white}
+.cats{display:flex;gap:7px;overflow:auto;padding:2px 0 11px}.cat{border:0;border-radius:30px;padding:10px 14px;white-space:nowrap;background:#efe5d7;font-size:13px;font-weight:750}.cat.active{background:var(--red);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.food{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden}.photo{height:140px;background:#e7d9c2;position:relative}.photo img{width:100%;height:100%;object-fit:cover}.emoji{position:absolute;inset:0;display:grid;place-items:center;font-size:50px}.foodbody{padding:11px}.food h3{font-size:15px;color:var(--green);margin:0 0 5px}.food p{font-size:12px;color:var(--muted);line-height:1.35;min-height:33px;margin:0 0 8px}.foot{display:flex;justify-content:space-between;align-items:center}.price{font-weight:900;color:var(--red);font-size:17px}.add{width:35px;height:35px;border:0;border-radius:10px;background:var(--red);color:white;font-size:22px}
+.panel,.promo{background:var(--paper);border:1px solid var(--line);border-radius:17px;padding:16px;margin:12px 0}.promo{background:linear-gradient(120deg,#f0ddbd,#fff8e9);color:var(--green)}
+.line{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}.qty{display:flex;align-items:center;gap:8px}.qty button{border:0;border-radius:8px;background:#f1e6d6;padding:6px 11px;color:var(--green);font-weight:bold}.total{display:flex;justify-content:space-between;font-size:21px;font-weight:900;color:var(--red);padding-top:14px}
+.empty{text-align:center;padding:28px;color:var(--muted)}.field{margin:5px 0 10px}footer{text-align:center;background:var(--green);color:white;padding:25px 12px}.small{font-size:12px;color:var(--muted)}
+@media(min-width:700px){main{padding:25px 24px 100px}.hero{min-height:420px}.grid{grid-template-columns:repeat(3,1fr);gap:17px}.photo{height:190px}.foodbody{padding:14px}.food h3{font-size:18px}.food p{font-size:14px}.toolbar{grid-template-columns:2fr 1fr}}
+</style></head><body><div class="stripe"></div>
+<header><div class="eyebrow">🇬🇹 COCINA TRADICIONAL</div><div class="brand">Sabores de Guatemala</div><p class="tagline">El sabor de nuestra tierra, en cada platillo.</p></header>
+<nav><button class="active" onclick="go('home',this)"><span>⌂</span>Inicio</button><button onclick="go('menu',this)"><span>▤</span>Menú</button><button onclick="go('cart',this)"><span>🛒</span>Carrito <b id="count">0</b></button><button onclick="go('points',this)"><span>☆</span>Puntos</button><button onclick="go('profile',this)"><span>♙</span>Perfil</button></nav>
+<main>
+<section class="page active" id="home"><div class="hero"><div><h1>Tradición que se disfruta.</h1><p>Recetas chapinas, ingredientes llenos de sabor y el cariño de nuestra cocina.</p><button class="btn" onclick="go('menu',document.querySelectorAll('nav button')[1])">🍴 Ver menú</button></div></div>
+<div class="quick"><button onclick="go('cart',document.querySelectorAll('nav button')[2])"><b>🛒</b>Mi carrito</button><button onclick="go('promos',null)"><b>🎁</b>Promociones</button><button onclick="go('points',document.querySelectorAll('nav button')[3])"><b>⭐</b>Mis puntos</button></div><h2>Favoritos de la casa</h2><div class="grid" id="featured"></div></section>
+<section class="page" id="menu"><h2>Nuestro menú</h2><div class="toolbar"><input class="search" id="search" placeholder="🔎 Buscar platillo..." oninput="render()"><select class="filter" id="sort" onchange="render()"><option value="default">Ordenar por</option><option value="low">Menor precio</option><option value="high">Mayor precio</option></select></div><div class="cats" id="cats"></div><div class="grid" id="products"></div></section>
+<section class="page" id="cart"><h2>Mi carrito</h2><div class="panel" id="cartbox"></div><div class="panel"><h3>Datos para tu pedido</h3><input class="field" id="customer" placeholder="Nombre completo"><input class="field" id="phone" placeholder="Número de teléfono"><select class="field" id="delivery"><option>Recoger en restaurante</option><option>Entrega a domicilio</option></select><input class="field" id="address" placeholder="Dirección (si es a domicilio)"><button class="btn green" style="width:100%" onclick="checkout()">Pedir por WhatsApp</button><p class="small">El restaurante confirmará el pedido por WhatsApp.</p></div></section>
+<section class="page" id="points"><h2>Mi programa de puntos</h2><div class="panel" style="text-align:center"><div style="font-size:45px">⭐</div><h2>0 puntos</h2><p class="small">Pregunta en el restaurante cómo registrar tus compras y canjear recompensas.</p></div></section>
+<section class="page" id="profile"><h2>Perfil y contacto</h2><div class="panel"><h3>Sabores de Guatemala</h3><p>Comida tradicional guatemalteca.</p><p>📍 Guatemala</p><p>📱 Pedidos por WhatsApp</p><p class="small">Agrega la dirección, horario y número oficial antes de publicar.</p></div></section>
+<section class="page" id="promos"><h2>Promociones</h2><div class="promo"><h3>🎉 Promociones especiales</h3><p>Consulta nuestras ofertas vigentes al realizar tu pedido.</p></div></section>
+</main><footer><div class="brand" style="color:white">Sabores de Guatemala</div><p>Hecho con tradición, servido con cariño.</p><small>Aplicación web · Diseño adaptable a celular</small></footer>
+<script>
+const dishes=[
+[1,"Pepián guatemalteco","Platos típicos",45,"🍲","Tradicional recado acompañado de arroz y tortillas.","https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"],
+[2,"Kak'ik","Platos típicos",50,"🥘","Caldo tradicional de pavo con especias.","https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"],
+[3,"Jocón","Platos típicos",45,"🍛","Pollo en salsa verde tradicional.","https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=900&q=80"],
+[4,"Hilachas","Platos típicos",45,"🥩","Carne deshebrada en recado rojo.","https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80"],
+[5,"Desayuno chapín","Desayunos",35,"🍳","Huevos, frijoles, plátano y tortillas.","https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=900&q=80"],
+[6,"Tamales colorados","Antojitos",15,"🫔","Tamales tradicionales de maíz y recado.","https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?auto=format&fit=crop&w=900&q=80"],
+[7,"Chuchitos","Antojitos",12,"🫔","Antojito chapín de maíz con recado.","https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=900&q=80"],
+[8,"Tostadas","Antojitos",10,"🌮","Crujientes tostadas con deliciosos ingredientes.","https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=900&q=80"],
+[9,"Atol de elote","Bebidas",12,"🥛","Bebida caliente tradicional de maíz.","https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=900&q=80"],
+[10,"Horchata","Bebidas",12,"🥤","Bebida refrescante con canela.","https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=900&q=80"],
+[11,"Rellenitos","Postres",10,"🍌","Plátano relleno de frijol dulce.","https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=80"],
+[12,"Torrejas","Postres",12,"🍮","Postre tradicional bañado en miel.","https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=80"]
+].map(x=>({id:x[0],name:x[1],cat:x[2],price:x[3],emoji:x[4],desc:x[5],img:x[6]}));
+let cart=JSON.parse(localStorage.getItem("sg_cart_v3")||"[]"),category="Todos";
+const cats=["Todos","Platos típicos","Desayunos","Antojitos","Bebidas","Postres"];
+function card(d){return `<article class="food"><div class="photo"><span class="emoji">${d.emoji}</span><img src="${d.img}" alt="${d.name}" loading="lazy" onload="this.previousElementSibling.style.display='none'" onerror="this.style.display='none'"></div><div class="foodbody"><h3>${d.name}</h3><p>${d.desc}</p><div class="foot"><b class="price">Q${d.price.toFixed(2)}</b><button class="add" onclick="add(${d.id})">+</button></div></div></article>`}
+function render(){let q=document.getElementById("search").value.toLowerCase(),a=dishes.filter(d=>(category==="Todos"||d.cat===category)&&d.name.toLowerCase().includes(q)),s=document.getElementById("sort").value;if(s==="low")a.sort((x,y)=>x.price-y.price);if(s==="high")a.sort((x,y)=>y.price-x.price);document.getElementById("products").innerHTML=a.map(card).join()||'<div class="empty">No encontramos platillos.</div>'}
+function renderCats(){document.getElementById("cats").innerHTML=cats.map(c=>`<button class="cat ${c===category?'active':''}" onclick="category='${c}';renderCats();render()">${c}</button>`).join("")}
+function go(id,b){document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));document.getElementById(id).classList.add("active");document.querySelectorAll("nav button").forEach(x=>x.classList.remove("active"));if(b)b.classList.add("active");if(id==="cart")renderCart();window.scrollTo(0,0)}
+function save(){localStorage.setItem("sg_cart_v3",JSON.stringify(cart));document.getElementById("count").textContent=cart.reduce((s,x)=>s+x.qty,0)}
+function add(id){let d=dishes.find(x=>x.id===id),i=cart.find(x=>x.id===id);if(i)i.qty++;else cart.push({...d,qty:1});save();alert("¡Agregado al carrito!")}
+function renderCart(){let el=document.getElementById("cartbox");if(!cart.length){el.innerHTML='<div class="empty">🛒<br>Tu carrito está vacío.</div>';return}let total=cart.reduce((s,x)=>s+x.price*x.qty,0);el.innerHTML=cart.map(x=>`<div class="line"><div><b>${x.name}</b><br><span class="price">Q${(x.price*x.qty).toFixed(2)}</span></div><div class="qty"><button onclick="change(${x.id},-1)">−</button>${x.qty}<button onclick="change(${x.id},1)">+</button></div></div>`).join("")+`<div class="total"><span>Total</span><span>Q${total.toFixed(2)}</span></div>`}
+function change(id,n){let x=cart.find(x=>x.id===id);x.qty+=n;if(x.qty<1)cart=cart.filter(x=>x.id!==id);save();renderCart()}
+function checkout(){if(!cart.length){alert("Tu carrito está vacío");return}let name=document.getElementById("customer").value.trim(),phone=document.getElementById("phone").value.trim(),address=document.getElementById("address").value.trim();if(!name||!phone){alert("Escribe tu nombre y teléfono");return}if(document.getElementById("delivery").value==="Entrega a domicilio"&&!address){alert("Escribe tu dirección");return}let total=cart.reduce((s,x)=>s+x.price*x.qty,0);let delivery=document.getElementById("delivery").value;let msg="PEDIDO SABORES DE GUATEMALA%0ACliente: "+encodeURIComponent(name)+"%0ATeléfono: "+encodeURIComponent(phone)+"%0AEntrega: "+encodeURIComponent(delivery)+"%0A"+encodeURIComponent(address)+"%0A%0A";cart.forEach(x=>msg+=x.qty+" x "+encodeURIComponent(x.name)+" - Q"+(x.price*x.qty).toFixed(2)+"%0A");msg+="%0ATOTAL: Q"+total.toFixed(2);window.location.href="https://wa.me/50212345678?text="+msg;}
+document.getElementById("featured").innerHTML=dishes.slice(0,3).map(card).join("");renderCats();render();save();
+</script></body></html>
