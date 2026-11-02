@@ -32,18 +32,18 @@ h2{font:800 26px Georgia,serif;color:var(--green);margin:23px 0 13px}.toolbar{di
 </main><footer><div class="brand" style="color:white">Sabores de Guatemala</div><p>Hecho con tradición, servido con cariño.</p><small>Aplicación web · Diseño adaptable a celular</small></footer>
 <script>
 const dishes=[
-[1,"Pepián guatemalteco","Platos típicos",45,"🍲","Tradicional recado acompañado de arroz y tortillas.","https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"],
-[2,"Kak'ik","Platos típicos",50,"🥘","Caldo tradicional de pavo con especias.","https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"],
-[3,"Jocón","Platos típicos",45,"🍛","Pollo en salsa verde tradicional.","https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=900&q=80"],
-[4,"Hilachas","Platos típicos",45,"🥩","Carne deshebrada en recado rojo.","https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80"],
-[5,"Desayuno chapín","Desayunos",35,"🍳","Huevos, frijoles, plátano y tortillas.","https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=900&q=80"],
-[6,"Tamales colorados","Antojitos",15,"🫔","Tamales tradicionales de maíz y recado.","https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?auto=format&fit=crop&w=900&q=80"],
-[7,"Chuchitos","Antojitos",12,"🫔","Antojito chapín de maíz con recado.","https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=900&q=80"],
-[8,"Tostadas","Antojitos",10,"🌮","Crujientes tostadas con deliciosos ingredientes.","https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=900&q=80"],
-[9,"Atol de elote","Bebidas",12,"🥛","Bebida caliente tradicional de maíz.","https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=900&q=80"],
-[10,"Horchata","Bebidas",12,"🥤","Bebida refrescante con canela.","https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=900&q=80"],
-[11,"Rellenitos","Postres",10,"🍌","Plátano relleno de frijol dulce.","https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=80"],
-[12,"Torrejas","Postres",12,"🍮","Postre tradicional bañado en miel.","https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=80"]
+[1,"Pepián guatemalteco","Platos típicos",45,"🍲","Tradicional recado acompañado de arroz y tortillas.","https://commons.wikimedia.org/wiki/Special:FilePath/Pepi%C3%A1n_Guatemala.jpg"],
+[2,"Kak'ik","Platos típicos",50,"🥘","Caldo tradicional de pavo con especias.","https://commons.wikimedia.org/wiki/Special:FilePath/Kak_ik.png"],
+[3,"Jocón","Platos típicos",45,"🍛","Pollo en salsa verde tradicional.","https://commons.wikimedia.org/wiki/Special:FilePath/Jocon.jpg"],
+[4,"Hilachas","Platos típicos",45,"🥩","Carne deshebrada en recado rojo.","https://commons.wikimedia.org/wiki/Special:FilePath/Hilacha.jpg"],
+[5,"Desayuno chapín","Desayunos",35,"🍳","Huevos, frijoles, plátano y tortillas.","https://commons.wikimedia.org/wiki/Special:FilePath/Typical_Guatemalan_breakfast_-_San_Juan_la_Laguna,_Guatemala.jpg"],
+[6,"Tamales colorados","Antojitos",15,"🫔","Tamales tradicionales de maíz y recado.","https://commons.wikimedia.org/wiki/Special:FilePath/161225-tamales.jpg"],
+[7,"Chuchitos","Antojitos",12,"🫔","Antojito chapín de maíz con recado.","https://www.guatemala.com/fotos/2021/03/souffle-de-chuchitos-a-domicilio-en-Ciudad-de-Guatemala.jpg"],
+[8,"Tostadas","Antojitos",10,"🌮","Crujientes tostadas con deliciosos ingredientes.","https://growingupbilingual.com/wp-content/uploads/2012/12/shutterstock_637371838.jpg"],
+[9,"Atol de elote","Bebidas",12,"🥛","Bebida caliente tradicional de maíz.","https://www.guatemala.com/fotos/2020/06/Atol-de-elote-a-domicilio.jpg"],
+[10,"Horchata","Bebidas",12,"🥤","Bebida refrescante con canela.","https://imperiochapin.com/wp-content/uploads/2020/03/Horchata-guatemalteca.jpg"],
+[11,"Rellenitos","Postres",10,"🍌","Plátano relleno de frijol dulce.","https://commons.wikimedia.org/wiki/Special:FilePath/Rellenitos-de-platano-01.jpg"],
+[12,"Torrejas","Postres",12,"🍮","Postre tradicional bañado en miel.","https://www.guatemala.com/fotos/201805/Torrejas-885x500.jpg"]
 ].map(x=>({id:x[0],name:x[1],cat:x[2],price:x[3],emoji:x[4],desc:x[5],img:x[6]}));
 let cart=JSON.parse(localStorage.getItem("sg_cart_v3")||"[]"),category="Todos";
 const cats=["Todos","Platos típicos","Desayunos","Antojitos","Bebidas","Postres"];
